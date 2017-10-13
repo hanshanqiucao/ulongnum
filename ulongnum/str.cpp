@@ -61,7 +61,7 @@ str::str(const char* j ,const bool verbose) {
 
 void str::reverse(){
     char c;
-    for(int i=0;i<(_length-1)/2;++i){
+    for(int i=0;i<_length/2;++i){
         c = _string[i];
         _string[i]=_string[_length-1-i];
         _string[_length-1-i]=c;
@@ -206,8 +206,9 @@ str operator+(const str & s1,const str & s2){
 }
 
 int string_compare(const str& s1,const  str& s2){
-    if(s1._length>s2._length) return (s1._length-s2._length);
-    else return (s2._length-s1._length);
+    //if(s1._length!=s2._length) return 0;
+    if (s1==s2) return 1;
+    else return 0;
 }
 
 char str::gt(const int index)const{

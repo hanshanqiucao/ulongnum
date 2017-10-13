@@ -36,6 +36,7 @@ public:
     friend ulongnum operator+(const ulongnum& n1,const int& n2);
     friend ulongnum operator+(const int& n1,const ulongnum& n2);
     friend ulongnum operator*(const ulongnum& n1,const ulongnum& n2);
+    friend bool operator==(const ulongnum& n1,const int& n2);
     //int len() const;
     //char gt(const int index)const;
 private:

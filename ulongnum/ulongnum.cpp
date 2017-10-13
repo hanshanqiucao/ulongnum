@@ -103,7 +103,7 @@ ulongnum operator+(const ulongnum& n1,const ulongnum& n2){
     int len1 = n1._num.len()-1;
     int len2 = n2._num.len()-1;
     int c=0;
-    char s[1001];
+    char s[len1>len2 ? len1 + 2 : len2+2];
     int len3=0;
     for (;len1>=0 ||len2>=0;len1--,len2--,len3++){
         if(len1>=0 && len2>=0){
@@ -119,31 +119,43 @@ ulongnum operator+(const ulongnum& n1,const ulongnum& n2){
         }
     }
     if(c) s[len3]='1';
-    str s1(s,false);
+    char* s2 = new char[len3];
+    for(int i=0;i<len3; i++){
+        s2[i]= s[i];
+    }
+    str s1(s2,false);
     s1.reverse();
-    
     //str s=stringAdd(n1._num,n2._num)
     ulongnum n3(s1);
-     
+    delete [] s2;
     return n3;
 }
 
 ulongnum operator+(const ulongnum& n1,const int& n2){
+    ulongnum n3(n2,false);
+    /*
     char *s = n1.num2string(n2);
     cout<<s;
     ulongnum n3(s,false);
-    return (n1+n3);
+     */
+    return n1+n3;
 }
 
 ulongnum operator+(const int& n1,const ulongnum& n2){
-    return (n2+n1);
+    return n2+n1;
 }
 
+bool operator==(const ulongnum& n1,const ulongnum& n2);
 
-ulongnum operator*(const ulongnum& n1,const ulongnum& n2){
+
+
+ulongnum operator*(const ulongnum& n1,const int& n2){
     
     return n1;
 }
+
+
+
 
 /*
 int ulongnum::len()const{
