@@ -28,14 +28,16 @@ public:
     ulongnum(const str& s);
     ulongnum(const ulongnum& n);
     void _copy(const ulongnum& n);
-    int numDigits(const int s);
-    char* num2string(const int n);
+    int numDigits(const int s)const;
+    char* num2string(const int n)const;
     friend ostream& operator<<(ostream& o,const ulongnum& n);
     ulongnum& operator=(const ulongnum& n);
     friend ulongnum operator+(const ulongnum& n1,const ulongnum& n2);
     friend ulongnum operator+(const ulongnum& n1,const int& n2);
-    int len();
-    char gt(const int index);
+    friend ulongnum operator+(const int& n1,const ulongnum& n2);
+    friend ulongnum operator*(const ulongnum& n1,const ulongnum& n2);
+    //int len() const;
+    //char gt(const int index)const;
 private:
   bool _display;
   str _num;

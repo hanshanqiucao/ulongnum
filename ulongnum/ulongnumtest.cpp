@@ -61,9 +61,8 @@ static void test_addition() {
   cout << "a = " << a << endl;
   cout << "b = " << b << endl;
   cout << "c = " << c << endl;
-  cout << "d = " << a + b << endl;
-  //ulongnum sum = a + 78 + b + c;
-  //cout << "sum = a + 78 + b + c = " << sum << endl;
+  ulongnum sum = a + 78 + b + c;
+  cout << "sum = a + 78 + b + c = " << sum << endl;
   //assert(sum == 109874);
 }
 /*----------------------------------------------------------------

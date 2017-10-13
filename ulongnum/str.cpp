@@ -210,11 +210,11 @@ int string_compare(const str& s1,const  str& s2){
     else return (s2._length-s1._length);
 }
 
-char str::gt(const int index){
+char str::gt(const int index)const{
     return _string[index];
 }
 
-int str::len(){
+int str::len()const{
     return _length;
 }
 

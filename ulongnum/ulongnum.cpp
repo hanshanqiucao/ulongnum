@@ -51,7 +51,7 @@ ulongnum::ulongnum(const ulongnum& n){
 /*----------------------------------------------------------------
  Counting how many digits in a num
  -----------------------------------------------------------------*/
-int ulongnum::numDigits(const int s)
+int ulongnum::numDigits(const int s)const
 {
     int count=0;
     int s1=(s>0)?s:s*(-1);
@@ -66,7 +66,7 @@ int ulongnum::numDigits(const int s)
  num to string
  -----------------------------------------------------------------*/
 
-char* ulongnum::num2string(const int n){
+char* ulongnum::num2string(const int n)const{
     int r=n;
     char*ch = new char[20];
     int count =numDigits(r);
@@ -99,49 +99,97 @@ ostream& operator<<(ostream& o, const ulongnum& n){
  + operator overloading
  -----------------------------------------------------------------*/
 ulongnum operator+(const ulongnum& n1,const ulongnum& n2){
-    /*
-    int len1 = n1.len()-1;
-    int len2 = n2.len()-1;
+   
+    int len1 = n1._num.len()-1;
+    int len2 = n2._num.len()-1;
     int c=0;
-    char* s;
+    char s[1001];
     int len3=0;
     for (;len1>=0 ||len2>=0;len1--,len2--,len3++){
         if(len1>=0 && len2>=0){
-            s[len3] = ((n1.gt(len1)-'0')+(n2.gt(len2)-'0')+c)%10 + '0';
-            c=((n1.gt(len1)-'0')+(n2.gt(len2)-'0')+c)/10;
+            s[len3] = ((n1._num.gt(len1)-'0')+(n2._num.gt(len2)-'0')+c)%10 + '0';
+            c=((n1._num.gt(len1)-'0')+(n2._num.gt(len2)-'0')+c)/10;
         }
         else if(len1<0){
-            s[len3] = (n2.gt(len2)-'0' + c)%10 +'0';
-            c = (n2.gt(len2)-'0' + c)/10;
+            s[len3] = (n2._num.gt(len2)-'0' + c)%10 +'0';
+            c = (n2._num.gt(len2)-'0' + c)/10;
         } else {
-            s[len3] = (n1.gt(len1)-'0' + c)%10 +'0';
-            c = (n1.gt(len1)-'0' + c)/10;
+            s[len3] = (n1._num.gt(len1)-'0' + c)%10 +'0';
+            c = (n1._num.gt(len1)-'0' + c)/10;
         }
     }
     if(c) s[len3]='1';
     str s1(s,false);
     s1.reverse();
+    
+    //str s=stringAdd(n1._num,n2._num)
     ulongnum n3(s1);
-     */
-    ulongnum n3=n1;
+     
     return n3;
 }
 
 ulongnum operator+(const ulongnum& n1,const int& n2){
-//    char *s = n1.num2string(n2);
-    ulongnum n3(n1);
-    //sdf
-    return n3;
+    char *s = n1.num2string(n2);
+    cout<<s;
+    ulongnum n3(s,false);
+    return (n1+n3);
+}
+
+ulongnum operator+(const int& n1,const ulongnum& n2){
+    return (n2+n1);
 }
 
 
+ulongnum operator*(const ulongnum& n1,const ulongnum& n2){
+    
+    return n1;
+}
 
-int ulongnum::len(){
+/*
+int ulongnum::len()const{
     return _num.len();
 }
-char ulongnum::gt(const int index){
+char ulongnum::gt(const int index)const{
     return _num.gt(index);
 }
+*/
+
+/*
+str stringAdd(const str & s1,const str & s2){
+    int len1 = s1.len()-1;
+    int len2 = s2.len()-1;
+    int c=0;
+    char* s;
+    int len3=0;
+    for (;len1>=0 ||len2>=0;len1--,len2--,len3++){
+        if(len1>=0 && len2>=0){
+            s[len3] = ((s1.gt(len1)-'0')+(s2.gt(len2)-'0')+c)%10 + '0';
+            c=((s1.gt(len1)-'0')+(s2.gt(len2)-'0')+c)/10;
+        }
+        else if(len1<0){
+            s[len3] = (s2.gt(len2)-'0' + c)%10 +'0';
+            c = (s2.gt(len2)-'0' + c)/10;
+        } else {
+            s[len3] = (s1.gt(len1)-'0' + c)%10 +'0';
+            c = (s1.gt(len1)-'0' + c)/10;
+        }
+    }
+    if(c) s[len3]='1';
+    str s3(s,false);
+    s3.reverse();
+    return s3;
+}
+
+
+
+str StringMlt(str & s1, str &s2){
+    
+    
+    return s1;
+}
+
+*/
+
 
 //EOF
 

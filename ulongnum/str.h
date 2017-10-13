@@ -38,8 +38,8 @@ public:
     friend str operator+(const str & s,const char* c);
     friend str operator+(const str & s1,const str & s2);
     friend int string_compare(const str& s1,const str & s2);
-    char gt(const int index);
-    int len();
+    char gt(const int index)const;
+    int len()const;
     void reverse();
 private:
     bool _display;
