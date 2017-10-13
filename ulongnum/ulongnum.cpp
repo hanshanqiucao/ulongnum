@@ -145,9 +145,14 @@ ulongnum operator+(const int& n1,const ulongnum& n2){
     return n2+n1;
 }
 
-bool operator==(const ulongnum& n1,const ulongnum& n2);
-
-
+bool operator==(const ulongnum& n1,const int& n2){
+    const ulongnum n3(n2);
+    return n1==n3;
+    //return string_compare(n1._num,n3);
+}
+bool operator==(const ulongnum& n1,const ulongnum& n2){
+    return string_compare(n1._num,n2._num);
+}
 
 ulongnum operator*(const ulongnum& n1,const int& n2){
     
